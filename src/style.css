@@ -290,7 +290,7 @@ nav {
     display: none;
     border: 1px #dadada solid
 }
-  
+
 .checkboxes label {
     display: block;
     font-family: lato;
@@ -427,7 +427,6 @@ nav {
         border-radius: 5%;
         justify-self: center;
         width: 60%;
-    
     }
     
     .data-sheet-footer{
