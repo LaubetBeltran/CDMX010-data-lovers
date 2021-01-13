@@ -265,30 +265,11 @@ document.getElementById("selectPokemonType").addEventListener('click',  showChec
 
 
 ///////////FiltroDebilidades/////////////////
-let weaknessesEachPokemon= [];
 let filterNumber = 0;
-let numberWeaknessesEachPokemon= [];
-let namePokePoke = ['w1','w2','w3','w4','w5','w6','w7','t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13','t14','t15','t16','t17','t18'];
 let allPokemon = data.pokemon;
 let conjunto=[];
 let filtroFinal= [];
 let resultFilterWeaknessesNumber=[];
-
-
-/*let todasDebilidades=[];
-function forEachPrueba(){
-  allPokemon.forEach(guardarTipos);
-  console.log(todasDebilidades);
-}
-let numeroAsignado =7;
-forEachPrueba();
-function guardarTipos(element){
-  let memoria= element.weaknesses;
-  if(memoria.length== numeroAsignado){
-    let Nombre= element.name; 
-    todasDebilidades.push(Nombre);
-  }
-}*/
 
 function weaknessesNumberFilterAdd(){
   conjunto[filterNumber] = [];
@@ -301,14 +282,6 @@ function weaknessesNumberFilterAdd(){
   }
   allPokemon.forEach(namesToWeaknessesNumber);
   console.log(conjunto[filterNumber]);
-  /*for (let i = 0; i < allPokemon.length; i++) {
-    weaknessesEachPokemon[i]= allPokemon[i].weaknesses;
-    numberWeaknessesEachPokemon[i] = weaknessesEachPokemon[i].length;
-    if(numberWeaknessesEachPokemon[i] == filterNumber){
-      conjunto[filterNumber].push(allPokemon[i].name);
-    }
-    
-  }*/
   resultFilterWeaknessesNumber = conjunto[filterNumber];
   if(resultFilterType.length==0){
     filtroFinal= resultFilterWeaknessesNumber;
@@ -335,143 +308,47 @@ function weaknessesNumberFilterQuit(){
     filtroFinal= resultFilterType; 
   }
     console.log(filtroFinal);
-
 }
 
-weaknessesNumberFilter();
+  let radioWeaknesses1 = document.getElementById('one');
+  let radioWeaknesses2 = document.getElementById('two');
+  let radioWeaknesses3 = document.getElementById('three');
+  let radioWeaknesses4 = document.getElementById('four');
+  let radioWeaknesses5 = document.getElementById('five');
+  let radioWeaknesses6 = document.getElementById('six');
+  let radioWeaknesses7 = document.getElementById('seven');
+  let valorFiltro = 0;
 
-function weaknessesNumberFilter(){
-let debilidades1 = document.getElementById('one');
-let debilidades2 = document.getElementById('two');
-let debilidades3 = document.getElementById('three');
-let debilidades4 = document.getElementById('four');
-let debilidades5 = document.getElementById('five');
-let debilidades6 = document.getElementById('six');
-let debilidades7 = document.getElementById('seven');
-let valorFiltro = 0;
-debilidades1.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades1.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterAdd();
-  }else{
-    valorFiltro = parseInt(debilidades1.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    console.log('borrar');
-    weaknessesNumberFilterQuit();
-  }
-});
-
-debilidades2.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades2.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro;
-    weaknessesNumberFilterAdd();
-  }else{
-    console.log('borrar');
-    valorFiltro = parseInt(debilidades2.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterQuit();
-  }
-});
-
-debilidades3.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades3.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterAdd();
-  }else{
-    console.log('borrar');
-    valorFiltro = parseInt(debilidades3.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterQuit();
-  }
-});
-
-debilidades4.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades4.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterAdd();
-  }else{
-    console.log('borrar');
-    valorFiltro = parseInt(debilidades4.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterQuit();
-  }
-});
-
-debilidades5.addEventListener('change', e => {
+  function checkedChangesRadiosWeaknesses(radioWeaknesses){
+    radioWeaknesses.addEventListener('change', e => {
     if(e.target.checked){
-      valorFiltro = parseInt(debilidades5.value);
+      valorFiltro = parseInt(radioWeaknesses.value);
       console.log(valorFiltro);
       filterNumber= valorFiltro; 
-      weaknessesNumberFilterAdd();
+    weaknessesNumberFilterAdd();
     }else{
-      console.log('borrar');
-      valorFiltro = parseInt(debilidades5.value);
-      console.log(valorFiltro);
-      filterNumber= valorFiltro; 
-      weaknessesNumberFilterQuit();
+      valorFiltro = parseInt(radioWeaknesses.value);
+    console.log(valorFiltro);
+    filterNumber= valorFiltro; 
+    console.log('borrar');
+    weaknessesNumberFilterQuit();
     }
-});
-
-debilidades6.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades6.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro;
-    weaknessesNumberFilterAdd();
-  }else{
-    console.log('borrar');
-    valorFiltro = parseInt(debilidades6.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterQuit();
+  });
   }
-});
 
-debilidades7.addEventListener('change', e => {
-  if(e.target.checked){
-    valorFiltro = parseInt(debilidades7.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterAdd();
-  }else{
-    console.log('borrar');
-    valorFiltro = parseInt(debilidades7.value);
-    console.log(valorFiltro);
-    filterNumber= valorFiltro; 
-    weaknessesNumberFilterQuit();
-  }
-});
+  checkedChangesRadiosWeaknesses(radioWeaknesses1);
+  checkedChangesRadiosWeaknesses(radioWeaknesses2);
+  checkedChangesRadiosWeaknesses(radioWeaknesses3);
+  checkedChangesRadiosWeaknesses(radioWeaknesses4);
+  checkedChangesRadiosWeaknesses(radioWeaknesses5);
+  checkedChangesRadiosWeaknesses(radioWeaknesses6);
+  checkedChangesRadiosWeaknesses(radioWeaknesses7);
 
-}
-
-
+/////////////FILTRO POKEMON TYPE//////////////////////////
+let namePokePoke = ['w','t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13','t14','t15','t16','t17','t18'];
 let typeDefinition= "grass"; 
 let positionArrayType = 7;
 let resultFilterType= [];
-
-conjunto[filterNumber] = [];
-  let namesToWeaknessesNumber = function(element){
-    let memoria= element.weaknesses;
-    if(memoria.length== filterNumber){
-      let nameWeaknesses= element.name; 
-      conjunto[filterNumber].push(nameWeaknesses);
-    } 
-  }
-  allPokemon.forEach(namesToWeaknessesNumber);
-  console.log(conjunto[filterNumber]);
-
 function pokemonTypeFilterAdd(){
   conjunto[typeDefinition] = [];
   let namesToPokemonType = function(element){
@@ -486,25 +363,14 @@ function pokemonTypeFilterAdd(){
   allPokemon.forEach(namesToPokemonType);
   console.log(conjunto[filterNumber]);
 
-
-  /*for (let i = 0; i < allPokemon.length; i++) {
-    allTypePokemon[i]= allPokemon[i].type;
-    let pokeTypeArrayOrigin= allTypePokemon[i];
-    for(let j = 0; j < pokeTypeArrayOrigin.length; j++){
-      if (pokeTypeArrayOrigin[j]==typeDefinition){
-        conjunto[typeDefinition].push(allPokemon[i].name);
-      } 
-    }
-}*/
 namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
-  // PARA TENER ODOS LOS NOMBRES DE LOS FILROS EN UN SOLO ARREGLO.
+  // PARA TENER TODOS LOS NOMBRES DE LOS FILROS EN UN SOLO ARREGLO.
   let TodosLosNombresJuntos = [];
   for (const value of namePokePoke){
-    let iMas1= namePokePoke.indexOf(value) + 1;
-    let iMenos6= namePokePoke.indexOf(value)-6;
-    if(value == 'w'+ iMas1){
+    let posisionValue = namePokePoke.indexOf(value);
+    if(value == 'w'){
       //console.log('w'+ iMas1);
-    } else if(value == 't' + iMenos6){
+    } else if(value == 't' + posisionValue){
       //console.log('t'+ iMenos6);
     } else {
       let arrayN= value;
@@ -517,8 +383,6 @@ namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
 
     }
   }
-
-
   console.log(namePokePoke);
   console.log(TodosLosNombresJuntos);
   let deleteNamesRepeat = TodosLosNombresJuntos.filter((item,index)=>{
@@ -526,6 +390,7 @@ namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
   })
   console.log(deleteNamesRepeat);
   resultFilterType= deleteNamesRepeat;
+  //AQUI EMPIEZA EL DEBUGGGGGGGG
   if(resultFilterType.length==0){
     filtroFinal= resultFilterWeaknessesNumber;
   } else{
@@ -544,18 +409,17 @@ namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
 //pokemonTypeFilter()
 
 function pokemonTypeFilterQuit(){
-  let filterTypeNumber= positionArrayType - 6;
+  let filterTypeNumber= positionArrayType;
   console.log(filterTypeNumber);
   namePokePoke.splice(positionArrayType,1,'t' + filterTypeNumber);
   console.log(namePokePoke); 
-  // PARA TENER ODOS LOS NOMBRES DE LOS FILROS EN UN SOLO ARREGLO.
+  // PARA TENER TODOS LOS NOMBRES DE LOS FILROS EN UN SOLO ARREGLO.
   let TodosLosNombresJuntos = [];
   for (const value of namePokePoke){
-    let iMas1= namePokePoke.indexOf(value) + 1;
-    let iMenos6= namePokePoke.indexOf(value)-6;
-    if(value == 'w'+ iMas1){
+    let posisionValue = namePokePoke.indexOf(value);
+    if(value == 'w'){
       //console.log('w'+ iMas1);
-    } else if(value == 't' + iMenos6){
+    } else if(value == 't' + posisionValue){
       //console.log('t'+ iMenos6);
     } else {
       let arrayN= value;
@@ -569,18 +433,13 @@ function pokemonTypeFilterQuit(){
     }
   }
   console.log(TodosLosNombresJuntos);
-  /*let deleteNamesRepeat = TodosLosNombresJuntos.filter((item,index)=>{
-    return TodosLosNombresJuntos.indexOf(item) === index;
-  })
-  console.log(deleteNamesRepeat);*/
-  resultFilterType= TodosLosNombresJuntos;
-  console.log(resultFilterType);
 
+  resultFilterType= TodosLosNombresJuntos;
+  //console.log(resultFilterType);
+  //AQUÍ EMPIEZA EL DEBUGGGG
   if(resultFilterType.length==0){
     filtroFinal= resultFilterWeaknessesNumber;
-  } else if(resultFilterType.length!=0 && resultFilterType.length==0){
-    filtroFinal= resultFilterType; 
-  } else if(resultFilterType.length!=0 && resultFilterType.length!=0){
+  } else {
     for(const value of resultFilterWeaknessesNumber){
       let namepokeD= value;
       for(const value of resultFilterType){
@@ -590,13 +449,11 @@ function pokemonTypeFilterQuit(){
       }
     }
   }
+
     console.log(filtroFinal);
-
-
 }
 
-pokemonTypeFilter();
-function pokemonTypeFilter(){
+
 let checkboxTypePokemon1 = document.getElementById('planta');
 let checkboxTypePokemon2 = document.getElementById('fuego');
 let checkboxTypePokemon3 = document.getElementById('agua');
@@ -616,294 +473,60 @@ let checkboxTypePokemon16 = document.getElementById('dragon');
 let checkboxTypePokemon17 = document.getElementById('siniestro');
 let checkboxTypePokemon18 = document.getElementById('hada');
 
-checkboxTypePokemon1.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon1.value;
-    console.log(typeDefinition);
-    positionArrayType = 7;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon1.value;
-    console.log(typeDefinition);
-    positionArrayType = 7;
-    pokemonTypeFilterQuit();
-  }
-});
+let positionArrayType1 = 1;
+let positionArrayType2 = 2;
+let positionArrayType3 = 3;
+let positionArrayType4 = 4;
+let positionArrayType5 = 5;
+let positionArrayType6 = 6;
+let positionArrayType7 = 7;
+let positionArrayType8 = 8;
+let positionArrayType9 = 9;
+let positionArrayType10 = 10;
+let positionArrayType11 = 11;
+let positionArrayType12 = 12;
+let positionArrayType13 = 13;
+let positionArrayType14 = 14;
+let positionArrayType15 = 15;
+let positionArrayType16 = 16;
+let positionArrayType17 = 17;
+let positionArrayType18 = 18;
 
-checkboxTypePokemon2.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon2.value;
-    console.log(typeDefinition);
-    positionArrayType = 8;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon2.value;
-    console.log(typeDefinition);
-    positionArrayType = 8;
-    pokemonTypeFilterQuit();
-  }
-});
 
-checkboxTypePokemon3.addEventListener('change', e => {
+function checkedChangesCheckboxes(checkboxTypePokemon, positionArrayTypeDefinition){
+  checkboxTypePokemon.addEventListener('change', e => {
   if(e.target.checked){
-    typeDefinition= checkboxTypePokemon3.value;
+    typeDefinition= checkboxTypePokemon.value;
+    positionArrayType = positionArrayTypeDefinition;
     console.log(typeDefinition);
-    positionArrayType = 9;
     console.log(positionArrayType);
-    pokemonTypeFilterAdd()
+    pokemonTypeFilterAdd();
     
   }else{
-    typeDefinition= checkboxTypePokemon3.value;
+    typeDefinition= checkboxTypePokemon.value;
+    positionArrayType = positionArrayTypeDefinition;
     console.log(typeDefinition);
-    positionArrayType = 9;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon4.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon4.value;
-    console.log(typeDefinition);
-    positionArrayType = 10;
     console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon4.value;
-    console.log(typeDefinition);
-    positionArrayType = 10;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon5.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon5.value;
-    console.log(typeDefinition);
-    positionArrayType = 11;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon5.value;
-    console.log(typeDefinition);
-    positionArrayType = 11;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon6.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon6.value;
-    console.log(typeDefinition);
-    positionArrayType = 12;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon6.value;
-    console.log(typeDefinition);
-    positionArrayType = 12;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon7.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon7.value;
-    console.log(typeDefinition);
-    positionArrayType = 13;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon7.value;
-    console.log(typeDefinition);
-    positionArrayType = 13;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon8.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon8.value;
-    console.log(typeDefinition);
-    positionArrayType = 14;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon8.value;
-    console.log(typeDefinition);
-    positionArrayType = 14;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon9.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon9.value;
-    console.log(typeDefinition);
-    positionArrayType = 15;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon9.value;
-    console.log(typeDefinition);
-    positionArrayType = 15;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon10.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon10.value;
-    console.log(typeDefinition);
-    positionArrayType = 16;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon10.value;
-    console.log(typeDefinition);
-    positionArrayType = 16;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon11.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon11.value;
-    console.log(typeDefinition);
-    positionArrayType = 17;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon11.value;
-    console.log(typeDefinition);
-    positionArrayType = 17;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon12.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon12.value;
-    console.log(typeDefinition);
-    positionArrayType = 18;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon12.value;
-    console.log(typeDefinition);
-    positionArrayType = 18;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon13.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon13.value;
-    console.log(typeDefinition);
-    positionArrayType = 19;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon13.value;
-    console.log(typeDefinition);
-    positionArrayType = 19;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon14.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon14.value;
-    console.log(typeDefinition);
-    positionArrayType = 20;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon14.value;
-    console.log(typeDefinition);
-    positionArrayType = 20;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon15.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon15.value;
-    console.log(typeDefinition);
-    positionArrayType = 21;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon15.value;
-    console.log(typeDefinition);
-    positionArrayType = 21;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon16.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon16.value;
-    console.log(typeDefinition);
-    positionArrayType = 22;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon16.value;
-    console.log(typeDefinition);
-    positionArrayType = 22;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon17.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon17.value;
-    console.log(typeDefinition);
-    positionArrayType = 23;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon17.value;
-    console.log(typeDefinition);
-    positionArrayType = 23;
-    pokemonTypeFilterQuit();
-  }
-});
-
-checkboxTypePokemon18.addEventListener('change', e => {
-  if(e.target.checked){
-    typeDefinition= checkboxTypePokemon18.value;
-    console.log(typeDefinition);
-    positionArrayType = 24;
-    console.log(positionArrayType);
-    pokemonTypeFilterAdd()
-    
-  }else{
-    typeDefinition= checkboxTypePokemon18.value;
-    console.log(typeDefinition);
-    positionArrayType = 24;
     pokemonTypeFilterQuit();
   }
 });
 }
 
-
-
+checkedChangesCheckboxes(checkboxTypePokemon1, positionArrayType1);
+checkedChangesCheckboxes(checkboxTypePokemon2, positionArrayType2);
+checkedChangesCheckboxes(checkboxTypePokemon3, positionArrayType3);
+checkedChangesCheckboxes(checkboxTypePokemon4, positionArrayType4);
+checkedChangesCheckboxes(checkboxTypePokemon5, positionArrayType5);
+checkedChangesCheckboxes(checkboxTypePokemon6, positionArrayType6);
+checkedChangesCheckboxes(checkboxTypePokemon7, positionArrayType7);
+checkedChangesCheckboxes(checkboxTypePokemon8, positionArrayType8);
+checkedChangesCheckboxes(checkboxTypePokemon9, positionArrayType9);
+checkedChangesCheckboxes(checkboxTypePokemon10, positionArrayType10);
+checkedChangesCheckboxes(checkboxTypePokemon11, positionArrayType11);
+checkedChangesCheckboxes(checkboxTypePokemon12, positionArrayType12);
+checkedChangesCheckboxes(checkboxTypePokemon13, positionArrayType13);
+checkedChangesCheckboxes(checkboxTypePokemon14, positionArrayType14);
+checkedChangesCheckboxes(checkboxTypePokemon15, positionArrayType15);
+checkedChangesCheckboxes(checkboxTypePokemon16, positionArrayType16);
+checkedChangesCheckboxes(checkboxTypePokemon17, positionArrayType17);
+checkedChangesCheckboxes(checkboxTypePokemon18, positionArrayType18);
