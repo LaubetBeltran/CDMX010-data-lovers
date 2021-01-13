@@ -439,7 +439,9 @@ function pokemonTypeFilterQuit(){
   //AQUÍ EMPIEZA EL DEBUGGGG
   if(resultFilterType.length==0){
     filtroFinal= resultFilterWeaknessesNumber;
-  } else {
+  } else if(resultFilterType.length!=0 && resultFilterType.length==0){
+    filtroFinal= resultFilterType; 
+  } else if(resultFilterType.length!=0 && resultFilterType.length!=0){
     for(const value of resultFilterWeaknessesNumber){
       let namepokeD= value;
       for(const value of resultFilterType){
@@ -449,7 +451,6 @@ function pokemonTypeFilterQuit(){
       }
     }
   }
-
     console.log(filtroFinal);
 }
 
