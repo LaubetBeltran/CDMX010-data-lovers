@@ -4,8 +4,7 @@ import data from './data/pokemon/pokemon.js';
 //import pokemon from './data/pokemon/pokemon.js';
 console.log(data.pokemon);
 //document.getElementById("home-main--button").addEventListener('click', infoPrincPokemon);
-document.getElementById("main-logo-container").style.display = 'none';
-document.getElementById("main-filter-container").style.display = 'none';
+
 let allPokemon = data.pokemon;
 console.log(typeof allPokemon);
 let namePokemon = [];
@@ -14,7 +13,9 @@ let nameAllPokemon = [];
 
 
 let infoPrincPokemon = document.getElementById("home-main--button");
+
 infoPrincPokemon.addEventListener("click", function () {
+  document.getElementById("home-section-info-container").style.display = 'grid';
   document.getElementById("home-main-section--welcome").style.display = 'none';
   document.getElementById("home-main-section--img").style.display = 'none';
   document.getElementById("main-logo-container").style.display = 'flex';
@@ -70,26 +71,11 @@ const searchPoke = document.getElementById("searchByNameButton");
 
 searchPoke.addEventListener("click", function() {
   let namePokeToSearch = document.getElementById("namePokeToSearch").value.toLowerCase();
-  //console.log(namePokeToSearch);
   let pokeFounded = searchPokemon(allPokemon, namePokeToSearch);
-  //console.log(pokeFounded);
-  let parentNodeEle = document.getElementById("home-pokemon-info-container");
-  function removeElementClass(parentNodeElement, className) {
-      let childClass = parentNodeElement.getElementsByClassName(className);
-      let lenght = childClass.length;
-      for (let i = lenght-1; i >= 0; i--) {
-          childClass[i].parentNode.removeChild(childClass[i]);
-      }
-  }
-  removeElementClass(parentNodeEle, "ind-info-pokemon-container");
   let pokeFoundedInfo = infoEachPokePrinc(pokeFounded[0]);
-  console.log(typeof pokeFounded[0]);
-  console.log(typeof pokeFounded);
-  console.log(pokeFounded[0]);
   document.getElementById('home-pokemon-info-container').innerHTML = pokeFoundedInfo;
   let container = document.getElementById('home-pokemon-info-container');
   let child = container.getElementsByClassName('buttonEachPokeC');
-  console.log(child);
   agregarClase(child);
 })
 
