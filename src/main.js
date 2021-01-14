@@ -270,6 +270,8 @@ let allPokemon = data.pokemon;
 let conjunto=[];
 let filtroFinal= [];
 let resultFilterWeaknessesNumber=[];
+let TodosLosNombresPokemon = 'todos los nombres pokemon';
+let finalFilter = TodosLosNombresPokemon;
 
 function weaknessesNumberFilterAdd(){
   conjunto[filterNumber] = [];
@@ -283,31 +285,36 @@ function weaknessesNumberFilterAdd(){
   allPokemon.forEach(namesToWeaknessesNumber);
   console.log(conjunto[filterNumber]);
   resultFilterWeaknessesNumber = conjunto[filterNumber];
-  if(resultFilterType.length==0){
-    filtroFinal= resultFilterWeaknessesNumber;
+  ////COMBINANDO FILTROS////
+  finalFilter = [];
+  if(resultFilterType==0){
+    finalFilter= resultFilterWeaknessesNumber;
   } else{
     for(const value of resultFilterWeaknessesNumber){
-      let namepokeD= value;
+      let namepokeD = value;
       for(const value of resultFilterType){
         if(value == namepokeD){
-          filtroFinal.push(value);
+          finalFilter.push(value);
         }
       }
     }
   }
-  console.log(filtroFinal);
-
+  console.log(finalFilter);
+  if(finalFilter.length==0){
+    alert('oops! No hay pokemones que cumplan con estas características');
+  }
 }
 
 function weaknessesNumberFilterQuit(){
   resultFilterWeaknessesNumber =[];
-  if(resultFilterType.length==0){
-    filtroFinal= resultFilterWeaknessesNumber;
-    console.log('no hay ningun filtro');
-  } else{
-    filtroFinal= resultFilterType; 
+  ////COMBINANDO FILTROS////
+  finalFilter = [];
+  if(resultFilterWeaknessesNumber.length==0 && resultFilterType!=0){
+    finalFilter= resultFilterType;
+  } else if(resultFilterWeaknessesNumber.length==0 && resultFilterType==0){
+    finalFilter= TodosLosNombresPokemon;
   }
-    console.log(filtroFinal);
+  console.log(finalFilter);
 }
 
   let radioWeaknesses1 = document.getElementById('one');
@@ -349,6 +356,8 @@ let namePokePoke = ['w','t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11'
 let typeDefinition= "grass"; 
 let positionArrayType = 7;
 let resultFilterType= [];
+
+
 function pokemonTypeFilterAdd(){
   conjunto[typeDefinition] = [];
   let namesToPokemonType = function(element){
@@ -380,7 +389,6 @@ namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
         //console.log(cadaNamePoke);
         TodosLosNombresJuntos.push(cadaNamePoke);
       }
-
     }
   }
   console.log(namePokePoke);
@@ -390,20 +398,24 @@ namePokePoke.splice(positionArrayType,1,conjunto[typeDefinition]);
   })
   console.log(deleteNamesRepeat);
   resultFilterType= deleteNamesRepeat;
-  //AQUI EMPIEZA EL DEBUGGGGGGGG
-  if(resultFilterType.length==0){
-    filtroFinal= resultFilterWeaknessesNumber;
+  ////COMBINANDO FILTROS////
+  finalFilter = [];
+  if(resultFilterWeaknessesNumber.length==0){
+    finalFilter= resultFilterType;
   } else{
     for(const value of resultFilterWeaknessesNumber){
-      let namepokeD= value;
+      let namepokeD = value;
       for(const value of resultFilterType){
         if(value == namepokeD){
-          filtroFinal.push(value);
+          finalFilter.push(value);
         }
       }
     }
   }
-  console.log(filtroFinal);
+  console.log(finalFilter);
+  if(finalFilter.length==0){
+    alert('oops! No hay pokemones que cumplan con estas características');
+  }
 }
 
 //pokemonTypeFilter()
@@ -436,22 +448,26 @@ function pokemonTypeFilterQuit(){
 
   resultFilterType= TodosLosNombresJuntos;
   //console.log(resultFilterType);
-  //AQUÍ EMPIEZA EL DEBUGGGG
-  if(resultFilterType.length==0){
-    filtroFinal= resultFilterWeaknessesNumber;
-  } else if(resultFilterType.length!=0 && resultFilterType.length==0){
-    filtroFinal= resultFilterType; 
-  } else if(resultFilterType.length!=0 && resultFilterType.length!=0){
+  ////COMBINANDO FILTROS////
+  finalFilter = [];
+  if(resultFilterWeaknessesNumber.length==0 && resultFilterType!=0){
+    finalFilter= resultFilterType;
+  } else if(resultFilterWeaknessesNumber.length!=0 && resultFilterType!=0){
     for(const value of resultFilterWeaknessesNumber){
-      let namepokeD= value;
+      let namepokeD = value;
       for(const value of resultFilterType){
         if(value == namepokeD){
-          filtroFinal.push(value);
+          finalFilter.push(value);
         }
       }
     }
+  } else if(resultFilterWeaknessesNumber.length!=0 && resultFilterType==0){
+    finalFilter= resultFilterWeaknessesNumber;
+  } else if(resultFilterWeaknessesNumber.length==0 && resultFilterType==0){
+    finalFilter= TodosLosNombresPokemon;
   }
-    console.log(filtroFinal);
+  console.log(finalFilter);
+
 }
 
 
