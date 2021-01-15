@@ -69,6 +69,7 @@ body {
     min-width: 500px;
     height: auto;
     background-color: rgba(243, 243, 243,0.5);
+    background-attachment: fixed;
 }
 
 .home-main-section--welcome{
@@ -333,7 +334,6 @@ body {
 .main-search-input-container input {
     width: 90%;
     height: 30px;
-    /*background: var(--background-gray);*/
     border: none;
     font-size: 1.6rem;
     float: left;
@@ -348,7 +348,6 @@ body {
     top: 50%;
     width: 7%;
     height: 30px;
-    margin-left: 83%;
     margin-top: 5px;
     border: none;
     border-radius: 4px;
@@ -577,7 +576,3 @@ body {
     background-color: #ADDAAC;
     border-radius: 5px;
 }
-
-
-
-
