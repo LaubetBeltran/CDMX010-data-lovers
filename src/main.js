@@ -351,12 +351,12 @@ checkedChangesCheckboxes(checkboxTypePokemon18, positionArrayType18);
 
 // UNCHECKED FILTROS PRESENTES AL DAR CLICK AL INPUT SEARCH//
 input.addEventListener('click', ()=>{
-  if(radioQuitFilter.checked){
-    console.log('no hay filtro por debilidades');
-
-  }else{
+  /// RESET FILTRO DEBILIDADES///
+  if(radioQuitFilter.checked == false){
     radioQuitFilter.click();
+    console.log('retirando filtro debilidades');
   }
+  /// RESET FILTRO TIPO POKEMON///
   if(checkboxTypePokemon1.checked){
     checkboxTypePokemon1.click();
   }
