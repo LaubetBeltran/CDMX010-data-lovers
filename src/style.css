@@ -381,7 +381,12 @@ body {
     height: 3.5%;
     padding: 0;
     margin: 0;
-    background-color: gray;
+}
+
+.exit-button {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .exit-icon {
