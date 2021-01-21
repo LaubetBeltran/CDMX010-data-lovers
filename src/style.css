@@ -9,6 +9,16 @@ html{
     font-family: 'Lato', sans-serif;
 }
 
+body{
+    background-color: rgba(243, 243, 243,0.5); 
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    padding: 0%;
+    margin: 0%;
+    
+    }
+
 :root {
     --header-yellow: #FCCF25;
     --button-blue: #2D70B7;
@@ -682,8 +692,20 @@ body {
     align-items: center;
     justify-content: center;
     margin: 20px 30px 0;
+<<<<<<< HEAD
 }
 
 .main-errormsg-container img {
     width: 80%;
 }
+=======
+}
+
+.main-errormsg-container img {
+    width: 80%;
+}
+
+
+
+
+>>>>>>> 892cdefd0ea88262d81769daef5c69682e59aaa7

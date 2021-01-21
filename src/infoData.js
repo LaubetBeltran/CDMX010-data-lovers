@@ -122,6 +122,8 @@ function evolutions (pokemon) {
   evaluate(nextEvolutions, nextEvoCont, 'nextEvolutionImg-container', 'nextEvolution-container');
   evaluate(prevEvolutions, prevEvoCont, 'prevEvolutionImg-container', 'prevEvolution-container');
   addCandies(nextEvolutions, candiesCont);
+  console.log(nextEvolutions);
+  console.log(candiesCont);
   document.getElementById('currencyStateImg-container').innerHTML = currencyPoke;
 }
 
@@ -160,9 +162,13 @@ function addCandies (arrayNextEv, arrayCandies) {
 }
 
 function createContCandy (pokemon) {
+  console.log(pokemon);
   let candies = pokemon.evolution['prev-evolution'][0]['candy-cost'];
   let candiesCont = `
   <p>${candies} caramelos</p>
   `;
+  console.log(candies);
   return candiesCont
 }
+
+
