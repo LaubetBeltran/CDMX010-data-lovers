@@ -1,6 +1,8 @@
 
 import data from './data/pokemon/pokemon.js';
-let allPokemon = data.pokemon;
+const allPokemon = data.pokemon;
+export const objAllPokemon = allPokemon;
+export const nextEvolutions = [];
 
 export function searchPokemon(data, pokeToSearch) {
   let pokemonFounded = data.find((searchName) => {
