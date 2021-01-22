@@ -44,8 +44,7 @@
                     </figure>
                 </div>
                 <div class= "main-filter-container" id= "main-filter-container">
-
-                    <form action="#" id="searchForm">
+                    <form action="">
                         <div class= "main-search-container">
                             <div class= "main-search-input-container">
                                 <button type= "button" class= "searchByNameButton" id= "searchByNameButton">
@@ -112,20 +111,19 @@
                             </div>
                             <div class="checkboxes" id="checkboxesNumber">
                                 <label for="one">
-                                    <input type="radio" id="one" name="numberWeaknesses" value="1">1</label>
+                                    <input type="checkbox" id="one" name="numberWeaknesses" value="1">1</label>
                                 <label for="two">
-                                    <input type="radio" id="two" name="numberWeaknesses" value="2">2</label>
+                                    <input type="checkbox" id="two" name="numberWeaknesses" value="2">2</label>
                                 <label for="three">
-                                    <input type="radio" id="three" name="numberWeaknesses" value="3">3</label>
+                                    <input type="checkbox" id="three" name="numberWeaknesses" value="3">3</label>
                                 <label for="four">
-                                    <input type="radio" id="four" name="numberWeaknesses" value="4">4</label>
+                                    <input type="checkbox" id="four" name="numberWeaknesses" value="4">4</label>
                                 <label for="five">
-                                    <input type="radio" id="five" name="numberWeaknesses" value="5">5</label>
+                                    <input type="checkbox" id="five" name="numberWeaknesses" value="5">5</label>
                                 <label for="six">
-                                    <input type="radio" id="six" name="numberWeaknesses" value="6">6</label>
+                                    <input type="checkbox" id="six" name="numberWeaknesses" value="6">6</label>
                                 <label for="seven">
-                                    <input type="radio" id="seven" name="numberWeaknesses" value="7">7</label>
-                                <label id="removeFilterOption"><input type="radio" name="numberWeaknesses" id="removeFilterLink"/>Remover este fltro</></label>
+                                    <input type="checkbox" id="seven" name="numberWeaknesses" value="7">7</label>
                             </div>
                         </div>
                     </form>
@@ -133,14 +131,27 @@
                 <div class= "home-pokemon-info-container" id = "home-pokemon-info-container">
                 </div>
                 <div class= "main-searchPoke-container" id= "main-searchPoke-container">
+                    <div class= "main-searchPoke" id= "main-searchPoke">
+                    </div>
+                    <button class= "main-search-button-back" id= 'main-search-button-back'>Regresar al inicio</button>
                 </div>
                 <div class= "main-errormsg-container" id= "main-errormsg-container">
+                    <div class="main-errormsg">
+                        <div class="main-errormsg-message">
+                            <p>¡Ups! No encontramos ningun pokemon con ese nombre</p>
+                        </div>
+                        <figure>
+                            <img src="./assets/errorMsg.png">
+                        </figure>
+                    </div>
+                    <div>
+                        <button class= "main-errormsg-button-back" id= "main-errormsg-button-back">Regresar al inicio</button>
+                    </div>
                 </div>
                 <div class= "data-sheet-container" id="data-sheet-container"></div>
             </section>
         </main>
-        <div id="data-sheet-container"></div>
-        <!--<div id="root"></div>-->
         <script src="main.js" type="module"></script>
     </body>
 </html>
+
