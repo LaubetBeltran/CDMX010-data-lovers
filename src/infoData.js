@@ -22,7 +22,7 @@ export const infoEachPokePrinc = (pokemon) => {
   }
 
 function infoEachPoke (pokemon) {
-  console.log(pokemon)
+  //console.log(pokemon)
   let objectPoke = pokemon;
   let rarityPoke = objectPoke["pokemon-rarity"];
   let sizePoke= objectPoke.size;
@@ -80,15 +80,15 @@ function infoEachPoke (pokemon) {
 }
 
 export const getFunction = (pokemon) => {
-  console.log(pokemon);
+  //console.log(pokemon);
   let dataSheet = "";
   let element = document.getElementById(pokemon.num);
-  console.log(element);
+  //console.log(element);
     document.getElementById(pokemon.num).addEventListener('click', function () {
-      console.log('Hola');
+      //console.log('Hola');
     document.getElementById('data-sheet-container').style.display= 'flex';
     dataSheet = infoEachPoke(pokemon);
-    console.log(dataSheet);
+    //console.log(dataSheet);
     document.getElementById('data-sheet-container').innerHTML = dataSheet;
     otherCharacteristicsPoke('data-sheet-weaknesses-container', pokemon.weaknesses);
     otherCharacteristicsPoke('data-sheet-resistant-container', pokemon.resistant);
