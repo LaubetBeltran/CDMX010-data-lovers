@@ -1,33 +1,36 @@
 import { infoEachPokePrinc, getFunction} from './infoData.js';
 import {searchPokemon} from './data.js';
 import data from './data/pokemon/pokemon.js';
-import{weaknessesNumberFilterAdd, weaknessesNumberFilterQuit, pokemonTypeFilterAdd, pokemonTypeFilterQuit}from'./filtros.js';
+import{weaknessesNumberFilterAdd, weaknessesNumberFilterQuit, pokemonTypeFilterAdd, pokemonTypeFilterQuit, buddyDistNumberFilterAdd, buddyDistFilterQuit}from'./filtros.js';
 import{getObjects}from './getObjects.js';
 let allPokemon = data.pokemon;
 let nameAllPokemon = [];
 
+
 const princContainer = document.getElementById('home-pokemon-info-container');
 const infoPrincPokemon = document.getElementById("home-main--button");
 
+//CREA LOS CONTENEDORES DE CADA POKEMONE EN LA DATA
 let infoPrinPoke = "";
 infoPrincPokemon.addEventListener("click", function () {
   document.getElementById("home-section-info-container").style.display = 'grid';
   document.getElementById("home-main-section--welcome").style.display = 'none';
   document.getElementById("home-main-section--img").style.display = 'none';
   document.getElementById("main-logo-container").style.display = 'flex';
-  document.getElementById("main-filter-container").style.display = 'flex'; 
+  document.getElementById("main-filter-container").style.display = 'flex';
   for (const pokemon of allPokemon) {
     infoPrinPoke += infoEachPokePrinc(pokemon);
     nameAllPokemon.push(pokemon.name);
   }
   document.getElementById('home-pokemon-info-container').innerHTML = infoPrinPoke;
-  allPokemon.forEach ((pokemon) => {
+  allPokemon.map (function (pokemon) {
     getFunction(pokemon);
   })
 })
 
 document.getElementById('main-errormsg-container').style.display='none';
 
+//BÚSQUEDA POR NOMBRE
 const searchPoke = document.getElementById("searchByNameButton");
 searchPoke.addEventListener("click", function() {
   let namePokeToSearch = document.getElementById("namePokeToSearch").value.toLowerCase();
@@ -44,8 +47,7 @@ searchPoke.addEventListener("click", function() {
     document.getElementById('home-pokemon-info-container').innerHTML = infoPrinPoke
     allPokemon.forEach ((pokemon) => {
       getFunction(pokemon);
-    })
-  };
+    })};
     princContainer.appendChild(button);
     getFunction(pokeFounded);
   } else {
@@ -53,15 +55,17 @@ searchPoke.addEventListener("click", function() {
     princContainer.style.display='none';
   }
   });
-  document.getElementById('main-errormsg-button-back').addEventListener("click", function() {
+    document.getElementById('main-errormsg-button-back').addEventListener("click", function() {
     backToTop();
     document.getElementById('main-errormsg-container').style.display='none';
 })
 
+//rEGRESO AL INICIO
 function backToTop(){
+  //resetear búsqueda y filtros
   document.getElementById("namePokeToSearch").value='';
   finalFilter= nameAllPokemon;
-  getObjects(finalFilter, nameAllPokemon, allPokemon);
+  getObjects(finalFilter);
   document.getElementById('home-pokemon-info-container').style.display='grid';
 }
 
@@ -71,14 +75,17 @@ let finalFilter = nameAllPokemon;
 ////////CHECKBOXES DESPLEGADOS//////
 let expanded = false;
 let expanded2 = false;
+let expanded3 = false;
 function showCheckboxesNumber() {
   let checkboxes = document.getElementById("checkboxesNumber");
   if (!expanded) {
     checkboxes.style.display = "block";
     expanded = true;
-    if(expanded2==true){
+    if(expanded2) {
       document.getElementById("selectPokemonType").click();
-    }  
+    } else if (expanded3) {
+      document.getElementById("selectBuddyDistance").click();
+    }
   } else {
     checkboxes.style.display = "none";
     expanded = false;
@@ -92,8 +99,10 @@ function showCheckboxesType() {
   if (!expanded2) {
     checkboxes.style.display = "block";
     expanded2 = true;
-    if(expanded==true){
+    if(expanded){
       document.getElementById("selectWeaknessesNumber").click();
+    } else if (expanded3) {
+      document.getElementById("selectBuddyDistance").click();
     }
   } else {
       checkboxes.style.display = "none";
@@ -102,11 +111,29 @@ function showCheckboxesType() {
 }
 document.getElementById("selectPokemonType").addEventListener('click',  showCheckboxesType);
 
+function showCheckboxesBuddy() {
+  let checkboxes = document.getElementById("checkboxesBuddyDistance");
+  if (!expanded3) {
+    checkboxes.style.display = "block";
+    expanded3 = true;
+    if (expanded) {
+      document.getElementById("selectWeaknessesNumber").click();
+    } else if (expanded2) {
+      document.getElementById("selectPokemonType").click();
+    }
+  } else {
+      checkboxes.style.display = "none";
+      expanded3 = false;
+    }
+}
+
+document.getElementById("selectBuddyDistance").addEventListener('click',  showCheckboxesBuddy);
+
 ////////VARIABLES PARA FILTRO DEBILIDADES Y TIPO///////
 //let finalFilter = nameAllPokemon;
 let valorFiltro = 0;
 let filterNumber = 0;
-let typeDefinition= "grass"; 
+let typeDefinition= "grass";
 let positionArrayType = 7;
 
 ///////////FILTRO NUM DEBILIDADES/////////////////
@@ -128,7 +155,7 @@ function checkedChangesRadiosWeaknesses(radioWeaknesses){
         input.onsearch();
       }
       valorFiltro = parseInt(radioWeaknesses.value);
-      filterNumber= valorFiltro; 
+      filterNumber= valorFiltro;
       finalFilter= weaknessesNumberFilterAdd(filterNumber);
       document.getElementById('removeFilterOption').style.display= 'block';
       getObjects(finalFilter);
@@ -197,24 +224,22 @@ let positionArrayType18 = 18;
 
 function checkedChangesCheckboxes(checkboxTypePokemon, positionArrayTypeDefinition){
   checkboxTypePokemon.addEventListener('change', e => {
-  if(e.target.checked){
-    if(input!=""){
-      input.onsearch();
-    }
     typeDefinition= checkboxTypePokemon.value;
     positionArrayType = positionArrayTypeDefinition;
-    finalFilter= pokemonTypeFilterAdd(typeDefinition, positionArrayType);
-    getObjects(finalFilter);
-    if(finalFilter.length==0){
-      alert('oops! No hay pokemones que cumplan con estas características, prueba con otro filtrado');
+    if(e.target.checked){
+      if(input!=""){
+        input.onsearch();
+      }
+      finalFilter= pokemonTypeFilterAdd(typeDefinition, positionArrayType);
+      getObjects(finalFilter);
+      if(finalFilter.length==0){
+        alert('oops! No hay pokemones que cumplan con estas características, prueba con otro filtrado');
+      }
+      document.getElementById("namePokeToSearch").value='';
+      } else{ /////QUITAR FILTRO TIPO POKEMON///////////
+      finalFilter= pokemonTypeFilterQuit(positionArrayType);
+      getObjects(finalFilter);
     }
-    document.getElementById("namePokeToSearch").value='';
-  }else{ /////QUITAR FILTRO TIPO POKEMON///////////
-    typeDefinition= checkboxTypePokemon.value;
-    positionArrayType = positionArrayTypeDefinition;
-    finalFilter= pokemonTypeFilterQuit(positionArrayType);
-    getObjects(finalFilter);
-  }
 });
 }
 checkedChangesCheckboxes(checkboxTypePokemon1, positionArrayType1);
@@ -254,9 +279,9 @@ function realTimeSearch(){
   let texto = input.value.toLowerCase();
   for( const nombre of nameAllPokemon){
     if(nombre.indexOf(texto)!==-1){
-      finalFilter.push(nombre);
+        finalFilter.push(nombre);
+      }
     }
-  }
   getObjects(finalFilter);
 }
 
@@ -269,13 +294,19 @@ input.onsearch= ()=>{
 
 // UNCHECKED FILTROS PRESENTES AL DAR CLICK AL INPUT SEARCH//
 input.addEventListener('click', ()=>{
-  if(expanded==true){
+  if(expanded){
     document.getElementById("selectWeaknessesNumber").click();
   }
-  if(expanded2==true){
+  if(expanded2){
     document.getElementById("selectPokemonType").click();
   }
-  if(radioQuitFilter.checked == false){
+  if(expanded3) {
+    document.getElementById("selectBuddyDistance").click();
+  }
+  if (!radioQuitFilterBuddy.checked) {
+    radioQuitFilterBuddy.click();
+  }
+  if(!radioQuitFilter.checked){
     radioQuitFilter.click();
   }
   function uncheckedCheckboxesFilterType(checkboxTypePokemon){
@@ -302,3 +333,47 @@ input.addEventListener('click', ()=>{
   uncheckedCheckboxesFilterType(checkboxTypePokemon17);
   uncheckedCheckboxesFilterType(checkboxTypePokemon18);
 })
+
+
+/////FILTRO BUDDY-DISTANCE-KM////
+let radioBuddyDistanceKm1 = document.getElementById('onekm');
+let radioBuddyDistanceKm3 = document.getElementById('threekm');
+let radioBuddyDistanceKm5 = document.getElementById('fivekm');
+let radioBuddyDistanceKm20 = document.getElementById('twentykm');
+let radioQuitFilterBuddy = document.getElementById('removeFilterLinkBuddy');
+let labelQuitFilterBuddy = document.getElementById('removeFilterOptionBuddy');
+
+function checkedChangesRadiosBuddyDist(radioBuddyDist){
+  radioBuddyDist.addEventListener('change', e => {
+    if(e.target.checked){
+      if(input!=""){
+        input.onsearch();
+      }
+      filterNumber= radioBuddyDist.value;
+      finalFilter= buddyDistNumberFilterAdd(filterNumber);
+      labelQuitFilterBuddy.style.display= 'block';
+      getObjects(finalFilter);
+      if(finalFilter.length==0){
+        alert('oops! No hay pokemones que cumplan con estas características, prueba con otro filtrado');
+      }
+    }
+  });
+}
+
+function removeNumberBuddyDisFilter(){
+  radioQuitFilterBuddy.addEventListener('change', e => {
+    if(e.target.checked){
+      finalFilter= buddyDistFilterQuit();
+      labelQuitFilterBuddy.style.display= 'none';
+      getObjects(finalFilter);
+    }
+  });
+}
+
+checkedChangesRadiosBuddyDist(radioBuddyDistanceKm1);
+checkedChangesRadiosBuddyDist(radioBuddyDistanceKm3);
+checkedChangesRadiosBuddyDist(radioBuddyDistanceKm5);
+checkedChangesRadiosBuddyDist(radioBuddyDistanceKm20);
+removeNumberBuddyDisFilter();
+labelQuitFilterBuddy.style.display= 'none';
+
