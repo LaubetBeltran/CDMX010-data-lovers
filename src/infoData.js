@@ -1,7 +1,6 @@
-import data from './data/pokemon/pokemon.js';
 import {searchEvolutions} from './data.js';
 
-let allPokemon = data.pokemon;
+
 let nameAllPokemon = [];
 
 export const infoEachPokePrinc = (pokemon) => {
@@ -82,7 +81,6 @@ function infoEachPoke (pokemon) {
 export const getFunction = (pokemon) => {
   //console.log(pokemon);
   let dataSheet = "";
-  let element = document.getElementById(pokemon.num);
   //console.log(element);
     document.getElementById(pokemon.num).addEventListener('click', function () {
       //console.log('Hola');
@@ -113,12 +111,14 @@ function otherCharacteristicsPoke (parentNode, property) {
   }
 }
 
+let nextEvolutions = [];
+let prevEvolutions = [];
 function evolutions (pokemon) {
   let currencyPoke = addImgs(pokemon);
-  let nextEvolutions = [];
-  let prevEvolutions = [];
-  searchEvolutions(pokemon, 'next-evolution', nextEvolutions);
-  searchEvolutions(pokemon, 'prev-evolution', prevEvolutions);
+  nextEvolutions = [];
+  prevEvolutions = [];
+  nextEvolutions = searchEvolutions(pokemon, 'next-evolution', nextEvolutions);
+  prevEvolutions = searchEvolutions(pokemon, 'prev-evolution', prevEvolutions);
   let nextEvoCont = "";
   let prevEvoCont= "";
   let candiesCont = "";

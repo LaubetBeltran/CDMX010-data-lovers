@@ -105,7 +105,7 @@
                         <div class= "main-filter--pokemonNumber">
                             <div class="selectBox" id="selectWeaknessesNumber">
                                 <select>
-                                    <option>Filtrar por Número de Debilidades</option>
+                                    <option>Filtrar por Número de Debilidades</option> 
                                 </select>
                                 <div class="overSelect"></div>
                             </div>
@@ -127,6 +127,27 @@
                                 <label id="removeFilterOption"><input type="radio" name="numberWeaknesses" id="removeFilterLink"/>Remover este fltro</label>
                             </div>
                         </div>
+                        <br>
+                        <div class= "main-filter--buddyDistance">
+                            <div class="selectBox" id="selectBuddyDistance">
+                                <select>
+                                    <option>Filtrar por Km para encontrar caramelos</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div class="checkboxes" id="checkboxesBuddyDistance">
+                                <label for="one">
+                                    <input type="radio" id="onekm" name="buddyDistance" value="1">1</label>
+                                <label for="three">
+                                    <input type="radio" id="threekm" name="buddyDistance" value="3">3</label>
+                                <label for="five">
+                                    <input type="radio" id="fivekm" name="buddyDistance" value="5">5</label>
+                                <label for="twenty">
+                                    <input type="radio" id="twentykm" name="buddyDistance" value="20">20</label>
+                                <label id= "removeFilterOptionBuddy">
+                                    <input type="radio" id="removeFilterLinkBuddy" name="buddyDistance">Remover este filtro</label>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class= "home-pokemon-info-container" id = "home-pokemon-info-container">
@@ -134,7 +155,7 @@
                 <div class= "main-searchPoke-container" id= "main-searchPoke-container">
                     <div class= "main-searchPoke" id= "main-searchPoke">
                     </div>
-                    <button class= "main-search-button-back" id= 'main-search-button-back'>Regresar al inicio</button>
+                    <button class= "main-search-button-back" id= "main-search-button-back">Regresar al inicio</button>
                 </div>
                 <div class= "main-errormsg-container" id= "main-errormsg-container">
                     <div class="main-errormsg">
