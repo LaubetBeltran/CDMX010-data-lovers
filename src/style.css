@@ -7,6 +7,11 @@
 html{
     font-size: 62.5%;
     font-family: 'Lato', sans-serif;
+    background-image: url('./assets/background-principal.jpg');
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 body{
@@ -42,13 +47,6 @@ nav {
     display: grid;
 }
 
-body {
-    background-image: url('./assets/background-principal.jpg');
-    background-position: center;
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
 
 .home-header-button--container {
     width: 100%;
@@ -78,7 +76,7 @@ body {
     width: 100%;
     min-width: 500px;
     height: auto;
-    background-color: rgba(243, 243, 243,0.5);
+    background-color: transparent;
     background-attachment: fixed;
 }
 

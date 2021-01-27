@@ -42,28 +42,13 @@ describe('pokemonTypeFilterQuit', () => {
     it('is a function', () => {
         expect(typeof pokemonTypeFilterQuit).toBe('function');
     });
-
-    /*it('should throw TypeError when invoked with wrong argument types', () => {
-        //expect(() =>pokemonTypeFilterAdd()).toThrow(TypeError);
-        expect(() => pokemonTypeFilterAdd(0)).toThrow(TypeError);
-        expect(() => pokemonTypeFilterAdd(null, [])).toThrow(TypeError);
-        expect(() => pokemonTypeFilterAdd(0, 0)).toThrow(TypeError);
-    });*/
     it('should return "["murkrow", "sneasel", "houndour", "houndoom"]" for positionArrayType =2', () => {
         expect(pokemonTypeFilterQuit(2)).toStrictEqual(["murkrow", "sneasel", "houndour", "houndoom"]);
     });
-
-    it('should return "["murkrow", "sneasel", "houndour", "houndoom"]" for positionArrayType =2', () => {
-        expect(pokemonTypeFilterQuit(2)).toStrictEqual(["murkrow", "sneasel", "houndour", "houndoom"]);
-    });
-    
     
 });
 
 describe('weaknessesNumberFilterAdd', () => {
-    it('is a function', () => {
-        expect(typeof weaknessesNumberFilterAdd).toBe('function');
-    });
     it('should return "["umbreon"]" for filterNumber =3', () => {
         expect(weaknessesNumberFilterAdd(3)).toStrictEqual(["umbreon"]);
     });

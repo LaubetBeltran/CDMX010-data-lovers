@@ -12,6 +12,17 @@ function allnames(){
     })
 }
 allnames();
+/*console.log(nameAllPokemon);
+let namesFaltantes =[];
+function arrays100(){
+    namesFaltantes =[];
+    for(let i =200; i<251; i++){
+        let eachName =allPokemon[i].name;
+        namesFaltantes.push(eachName);
+    }
+    console.log(namesFaltantes);
+}
+arrays100();*/
 let finalFilter= [];
 ///////////FILTRO NUM DEBILIDADES/////////////////
 export const weaknessesNumberFilterAdd = (filterNumber)=>{//, allPokemon, finalFilter) =>{

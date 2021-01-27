@@ -52,8 +52,9 @@ searchPoke.addEventListener("click", function() {
     document.getElementById('main-errormsg-container').style.display='flex';
     princContainer.style.display='none';
   }
-  });
-  document.getElementById('main-errormsg-button-back').addEventListener("click", function() {
+});
+
+document.getElementById('main-errormsg-button-back').addEventListener("click", function() {
     backToTop();
     document.getElementById('main-errormsg-container').style.display='none';
 })
@@ -61,7 +62,7 @@ searchPoke.addEventListener("click", function() {
 function backToTop(){
   document.getElementById("namePokeToSearch").value='';
   finalFilter= nameAllPokemon;
-  getObjects(finalFilter, nameAllPokemon, allPokemon);
+  getObjects(finalFilter);
   document.getElementById('home-pokemon-info-container').style.display='grid';
 }
 
@@ -303,10 +304,3 @@ input.addEventListener('click', ()=>{
   uncheckedCheckboxesFilterType(checkboxTypePokemon17);
   uncheckedCheckboxesFilterType(checkboxTypePokemon18);
 })
-
-/*noSe();
-function noSe(){
-  let holi= pokemonTypeFilterAdd('dragon', 16);
-  console.log(typeof pokemonTypeFilterAdd);
-  console.log(holi);
-}*/
