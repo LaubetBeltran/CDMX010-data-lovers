@@ -23,7 +23,7 @@ infoPrincPokemon.addEventListener("click", function () {
     nameAllPokemon.push(pokemon.name);
   }
   document.getElementById('home-pokemon-info-container').innerHTML = infoPrinPoke;
-  allPokemon.forEach ((pokemon) => {
+  allPokemon.map (function (pokemon) {
     getFunction(pokemon);
   })
 })
